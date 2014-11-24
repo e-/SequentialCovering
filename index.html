@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seqential Covering</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sequential Covering</h1>
+      <form role="form" class="form-horizontal" id="form">
+        <div class="form-group">
+          <label for="dataset" class="col-sm-2">Dataset</label>
+          <div class="col-sm-10">
+            <select name="dataset" id="dataset" class="form-control">
+              <option value="adult+stretch.data">adult+stretch.data (20 rows)</option>
+              <option value="adult-stretch.data">adult-stretch.data (20 rows)</option>
+              <option value="balance-scale.data">balance-scale.data (625 rows)</option>
+              <option value="car.data">car.data (1728 rows)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="attribute" class="col-sm-2">Index of Attribute to Learn</label>
+          <div class="col-sm-10">
+            <input type="number" id="attribute" name="attribute" class="form-control" placeholder="0, 1, ... (n th attribute)" value="4">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="gain" class="col-sm-2">Stop when FOIL gain is less than</label>
+          <div class="col-sm-10">
+            <input type="number" id="gain" name="gain" class="form-control" placeholder="5.0" value="5.0">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg">
+          Run
+        </button>
+      </form>
+
+      <div id="log">
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

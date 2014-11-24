@@ -187,7 +187,7 @@ function classify(path, whichAttribute){
   $('#log').empty();
 
   $.get(path, function(csv){
-    $('#log').append('<h2>Raw Data</h2><div>'+csv.replace(/\n/g,'<br />')+'</div><h2>Rules</h2>');
+    log('<h2>Raw Data</h2><div>'+csv.replace(/\n/g,'<br />')+'</div><h2>Rules</h2>');
     csv.split('\n').filter(function(line){return line.trim().length > 0;}).forEach(function(line){
       var instance = [];
       line.split(',').forEach(function(value){
@@ -196,7 +196,13 @@ function classify(path, whichAttribute){
       data.push(instance);
     });
     
+    var t1 = new Date().getTime();
     sc(data, whichAttribute);
+    var t2 = new Date().getTime(),
+        sec = Math.round((t2 - t1) / 100) / 10;
+    log('<h2>Performance</h2>');
+    log(sec + ' second(s) elapsed');
+
   });
 }
 
@@ -216,9 +222,9 @@ $(function(){
       alert('Please enter the stop condition');
       return false;
     }
-
+    
     classify(dataset, attribute);
-
+    
     return false;
   });
 });
